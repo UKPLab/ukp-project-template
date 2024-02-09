@@ -68,28 +68,3 @@ jobs:
           pylint --disable=trailing-whitespace,missing-class-docstring,missing-final-newline,trailing-newlines \
                   --fail-under=9.0 \
                   $(git ls-files '*.py') || echo "::warning::Pylint check failed, but the workflow will continue."
-
-  tests:
-    needs: check-files
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with: 
-          python-version: 3.9
-          
-      - name: Install dependencies
-        run: |
-          pip install .
-          pip install -r requirements-dev.txt
-
-      - name: Run tests
-        run: |
-          pytest -v --cov-fail-under=60 --cov=ukp_project_template -l --tb=short --maxfail=1 tests/

@@ -1,130 +1,107 @@
 # About this template
 
-Hi, I created this template to help you get started with a new project.
+Hi, I've adapted this template from the excellent [python-project-template](https://github.com/rochacbruno/python-project-template/) by [rochacbruno](https://github.com/rochacbruno). It was created having in mind UKP Lab people and what the most common use-cases would be. Following its structure you'll get into developing your next paper in no time!
 
-I have created and maintained a number of python libraries, applications and 
-frameworks and during those years I have learned a lot about how to create a 
-project structure and how to structure a project to be as modular and simple 
-as possible.
+It includes:
 
-Some decisions I have made while creating this template are:
+- 📦 A basic [setup.py](setup.py) file to provide installation, packaging and distribution for your project.  
+  Template uses setuptools because it's the de-facto standard for Python packages
+- 📃 Documentation structure using [mkdocs](http://www.mkdocs.org)
+- 🧪 Testing structure using [pytest](https://docs.pytest.org/en/latest/)
+- ✅ Code linting using [pylint](https://pypi.org/project/pylint/)
+- 🎯 Entry points to execute your program using `python -m <ukp_project_template>` with basic CLI argument parsing.
+- 🔄 Continuous integration using [Github Actions](https://github.com/UKPLab/ukp-project-template/actions) with jobs to check, lint and test your project.
 
- - Create a project structure that is as modular as possible.
- - Keep it simple and easy to maintain.
- - Allow for a lot of flexibility and customizability.
- - Low dependency (this template doesn't add dependencies)
+Are there any changes you'd like to request? Feel free to fork and open a pull request!
 
 ## Structure
 
 Lets take a look at the structure of this template:
 
 ```text
-├── Containerfile            # The file to build a container using buildah or docker
-├── CONTRIBUTING.md          # Onboarding instructions for new contributors
-├── docs                     # Documentation site (add more .md files here)
-│   └── index.md             # The index page for the docs site
-├── .github                  # Github metadata for repository
-│   ├── release_message.sh   # A script to generate a release message
-│   └── workflows            # The CI pipeline for Github Actions
-├── .gitignore               # A list of files to ignore when pushing to Github
-├── HISTORY.md               # Auto generated list of changes to the project
-├── LICENSE                  # The license for the project
-├── Makefile                 # A collection of utilities to manage the project
-├── MANIFEST.in              # A list of files to include in a package
-├── mkdocs.yml               # Configuration for documentation site
-├── project_name             # The main python package for the project
-│   ├── base.py              # The base module for the project
-│   ├── __init__.py          # This tells Python that this is a package
-│   ├── __main__.py          # The entry point for the project
-│   └── VERSION              # The version for the project is kept in a static file
-├── README.md                # The main readme for the project
-├── setup.py                 # The setup.py file for installing and packaging the project
-├── requirements.txt         # An empty file to hold the requirements for the project
-├── requirements-test.txt    # List of requirements for testing and devlopment
-├── setup.py                 # The setup.py file for installing and packaging the project
-└── tests                    # Unit tests for the project (add mote tests files here)
-    ├── conftest.py          # Configuration, hooks and fixtures for pytest
-    ├── __init__.py          # This tells Python that this is a test package
-    └── test_base.py         # The base test case for the project
+│   .gitignore                      # A list of files to ignore when pushing to GH
+│   ABOUT_THIS_TEMPLATE.md          # The file you're reading right now
+│   LICENSE                         # The license for the project
+│   mkdocs.yml                      # Configuration for documentation site
+│   NOTICE.txt                      # Legal notice for the repository
+│   README.md                       # The main readme for the project
+│   requirements-dev.txt            # List of requirements for testing and devlopment
+│   requirements.txt                # An empty file to hold the requirements for the project
+│   setup.py                        # The setup.py file for installing and packaging the project
+│
+├───.github                         # Github metadata for repository
+│   │   dependabot.yml              # Dependabot workflow for updating requirements
+│   │   init.sh                     # Initializes the repository
+│   │   PULL_REQUEST_TEMPLATE.md    # Used automatically by GH for pull requests
+│   │   rename_project.sh           # Called once at repository creation
+│   │
+│   ├───ISSUE_TEMPLATE              # Templates for creating issues on GH 
+│   │
+│   └───workflows                   # GH Actions folder
+│           docs.yml                # Builds documentation automatically
+│           main.yml                # Runs install and file checks
+│           rename_project.yml      # Renames repository at creation
+│           tests.yml               # Run all tests in 'tests' folder
+│
+├───docs                            # Auto-generated documentation 
+│       index.md                    # Landing page of docs
+│
+├───ukp_project_template             # The main python package for the project
+│       base.py                     # The base module for the project
+│       cli.py                      # Defines CLI instructions
+│       __init__.py                 # This tells Python that this is a package
+│       __main__.py                 # The entry point for the project
+│
+└───tests                           # Unit tests for the project (add more tests files here)
+        conftest.py                 # Configuration, hooks and fixtures for pytest
+        test_base.py                # The base test case for the project
+        __init__.py                 # This tells Python that this is a test package
 ```
 
-## FAQ
+## FAQs
 
-Frequent asked questions.
 
-### Why this template is not using [Poetry](https://python-poetry.org/) ?
+### Where should I add new stuff ?
 
-I really like Poetry and I think it is a great tool to manage your python projects,
-if you want to switch to poetry, you can run `make switch-to-poetry`.
+You should create new files and subpackages inside ukp_project_template and implement your functionalities there. Remember to add what you write to `__init__.py` so that the imports work smoothly. Take a look at `base.py` and `__init__.py` to understand how it works
 
-But for this template I wanted to keep it simple.
-
-Setuptools is the most simple and well supported way of packaging a Python project,
-it doesn't require extra dependencies and is the easiest way to install the project.
-
-Also, poetry doesn't have a good support for installing projects in development mode yet.
-
-### Why the `requirements.txt` is empty ?
+### Why is `requirements.txt` empty ?
 
 This template is a low dependency project, so it doesn't have any extra dependencies.
-You can add new dependencies as you will or you can use the `make init` command to
-generate a `requirements.txt` file based on the template you choose `flask, fastapi, click etc`.
+You can freely add new dependencies.
 
-### Why there is a `requirements-test.txt` file ?
+You should put here everything needed to replicate your work. 
+Testing, linting, and other requirements used only in development should go in `requirements-dev.txt`
 
-This file lists all the requirements for testing and development,
-I think the development environment and testing environment should be as similar as possible.
+### Why is there a `requirements-dev.txt` file ?
 
-Except those tools that are up to the developer choice (like ipython, ipdb etc).
+This file lists all the requirements for testing and development. Use it to separate things you used during development from the essential stuff needed to replicate your work.
 
-### Why the template doesn't have a `pyproject.toml` file ?
+### What is the `.github` folder?
 
-It is possible to run `pip install https://github.com/name/repo/tarball/main` and
-have pip to download the package direcly from Git repo.
+It contains [GitHub Actions](https://docs.github.com/en/actions) that are executed automatically when pushing your code. You can see results for your repository [here](https://github.com/UKPLab/ukp-project-template/actions).
 
-For that to work you need to have a `setup.py` file, and `pyproject.toml` is not
-supported for that kind of installation.
+### What does the linter workflow do?
 
-I think it is easier for example you want to install specific branch or tag you can
-do `pip install https://github.com/name/repo/tarball/{TAG|REVISON|COMMIT}`
+It checks whether your code is clean enough from duplication, inconsistencies, violations to the naming convention etc.
+It's not supposed to fail, but you should still look into it to get an idea of which parts of your code may need adjustments.
 
-People automating CI for your project will be grateful for having a setup.py file
+### Why do automated actions fail ?
 
-### Why isn't this template made as a cookiecutter template?
+This means there is something wrong in the files/tests/requirements. 
+Click on the failing run to read more details.
 
-I really like [cookiecutter](https://github.com/cookiecutter/cookiecutter) and it is a great way to create new projects,
-but for this template I wanted to use the Github `Use this template` button,
-to use this template doesn't require to install extra tooling such as cookiecutter.
+### Why include `tests` and `docs` as part of the release?
 
-Just click on [Use this template](https://github.com/rochacbruno/python-project-template/generate) and you are good to go.
+This template ships with everything you may need. You can remove what you don't like in this way:
+    - If you don't need automatic documentation generation, you can delete folder `docs`, file `.github\workflows\docs.yml` and `mkdocs.yml`
+    - If you don't want automatic testing, you can delete folder `tests` and file `.github\workflows\tests.yml`
 
-The substituions are done using github actions and a simple sed script.
+### How can I use pytest & pylint to check my code?
 
-### Why `VERSION` is kept in a static plain text file?
-
-I used to have my version inside my main module in a `__version__` variable, then
-I had to do some tricks to read that version variable inside the setuptools 
-`setup.py` file because that would be available only after the installation.
-
-I decided to keep the version in a static file because it is easier to read from
-wherever I want without the need to install the package.
-
-e.g: `cat project_name/VERSION` will get the project version without harming
-with module imports or anything else, it is useful for CI, logs and debugging.
-
-### Why to include `tests`, `history` and `Containerfile` as part of the release?
-
-The `MANIFEST.in` file is used to include the files in the release, once the 
-project is released to PyPI all the files listed on MANIFEST.in will be included
-even if the files are static or not related to Python.
-
-Some build systems such as RPM, DEB, AUR for some Linux distributions, and also
-internal repackaging systems tends to run the tests before the packaging is performed.
-
-The Containerfile can be useful to provide a safer execution environment for 
-the project when running on a testing environment.
-
-I added those files to make it easier for packaging in different formats.
+Command `pytest` called from the project folder will run all tests inside the `tests` folder.
+Similarly, `pylint` will run linting checks on your code and give you a status report.
+It checks things such as logic, formatting, correct imports, duplication etc. 
 
 ### Why conftest includes a go_to_tmpdir fixture?
 
@@ -145,54 +122,4 @@ pre-commit is an excellent tool to automate checks and formatting on your code.
 However I figured out that pre-commit adds extra dependency and it an entry barrier
 for new contributors.
 
-Having the linting, checks and formatting as simple commands on the [Makefile](Makefile)
-makes it easier to undestand and change.
-
 Once the project is bigger and complex, having pre-commit as a dependency can be a good idea.
-
-### Why the CLI is not using click?
-
-I wanted to provide a simple template for a CLI application on the project main entry point
-click and typer are great alternatives but are external dependencies and this template
-doesn't add dependencies besides those used for development.
-
-### Why this doesn't provide a full example of application using Flask or Django?
-
-as I said before, I want it to be simple and multipurpose, so I decided to not include
-external dependencies and programming design decisions.
-
-It is up to you to decide if you want to use Flask or Django and to create your application
-the way you think is best.
-
-This template provides utilities in the Makefile to make it easier to you can run:
-
-```bash
-$ make init 
-Which template do you want to apply? [flask, fastapi, click, typer]? > flask
-Generating a new project with Flask ...
-```
-
-Then the above will download the Flask template and apply it to the project.
-
-## The Makefile
-
-All the utilities for the template and project are on the Makefile
-
-```bash
-❯ make
-Usage: make <target>
-
-Targets:
-help:             ## Show the help.
-install:          ## Install the project in dev mode.
-fmt:              ## Format code using black & isort.
-lint:             ## Run pep8, black, mypy linters.
-test: lint        ## Run tests and generate coverage report.
-watch:            ## Run tests on every change.
-clean:            ## Clean unused files.
-virtualenv:       ## Create a virtual environment.
-release:          ## Create a new tag for release.
-docs:             ## Build the documentation.
-switch-to-poetry: ## Switch to poetry package manager.
-init:             ## Initialize the project based on an application template.
-```

@@ -1,3 +1,6 @@
+# This file defines fixtures that are used by all tests in the tests/ directory.
+# See https://docs.pytest.org/en/latest/fixture.html for more information about fixtures.
+
 import sys
 import pytest
 

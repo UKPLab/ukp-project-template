@@ -1,3 +1,7 @@
+<p  align="center">
+  <img src='logo.png' width='200'>
+</p>
+
 # ukp_project_template
 [![Arxiv](https://img.shields.io/badge/Arxiv-YYMM.NNNNN-red?style=flat-square&logo=arxiv&logoColor=white)](https://put-here-your-paper.com)
 [![License](https://img.shields.io/github/license/UKPLab/ukp-project-template)](https://opensource.org/licenses/Apache-2.0)

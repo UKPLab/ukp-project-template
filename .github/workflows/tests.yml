@@ -32,9 +32,18 @@ jobs:
         run: |
           pip install .
           pip install -r requirements-dev.txt
-
+      
+      # Hacky way to get package name from setup.py
+      - name: Get package name
+        id: get_package_name
+        run: |
+          echo "::set-output name=package_name::$(python -c "import re; \
+                                                              with open('setup.py', 'r') as f: \
+                                                                    data = f.read(); \
+                                                                    print(re.search(r"name\s*=\s*['\"]([^'\"]+)['\"]", data).group(1))")"
+  
       - name: Run tests
         run: |
-          pytest -v --cov-fail-under=60 --cov=ukp_project_template -l --tb=short --maxfail=1 tests/
+          pytest -v --cov-fail-under=60 --cov=${{ steps.get_package_name.outputs.package_name }} -l --tb=short --maxfail=1 tests/
           coverage xml
           coverage html

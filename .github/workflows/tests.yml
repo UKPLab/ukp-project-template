@@ -37,10 +37,10 @@ jobs:
       - name: Get package name
         id: get_package_name
         run: |
-          echo "::set-output name=package_name::$(python -c "import re; \
-                                                              with open('setup.py', 'r') as f: \
-                                                                    data = f.read(); \
-                                                                    print(re.search(r"name\s*=\s*['\"]([^'\"]+)['\"]", data).group(1))")"
+          setup_file="setup.py"
+          pattern="name="
+          project_name=$(grep -oP "(?<=${pattern}\")[^\"]+" $setup_file)
+          echo "::set-output name=package_name::$project_name"
   
       - name: Run tests
         run: |

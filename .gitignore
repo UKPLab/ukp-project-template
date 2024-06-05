@@ -133,3 +133,7 @@ dmypy.json
 
 # History
 .history
+
+# Project files
+sketch*
+ukp_project_template/sketch*

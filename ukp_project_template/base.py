@@ -54,3 +54,9 @@ class BaseClass:
             True if the entities are equal, False otherwise.
         """
         return self.name == other.name
+
+    def something(self):
+        """
+        Does something.
+        """
+        return "something"

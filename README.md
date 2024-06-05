@@ -48,15 +48,24 @@ pip install -r requirements-dev.txt # Only needed for development
 
 ### Using the classes
 
-This is how you can use classes inside `ukp_project_template`: 
+To import classes/methods of `ukp_project_template` from inside the package itself you can use relative imports: 
 
 ```py
-from ukp_project_template import BaseClass
-from ukp_project_template import base_function
+from .base import BaseClass # Notice how I omit the package name
 
-BaseClass().base_method()
-base_function()
+BaseClass().something()
 ```
+
+To import classes/methods from outside the package (e.g. when you want to use the package in some other project) you can instead refer to the package name:
+
+```py
+from ukp_project_template import BaseClass # Notice how I omit the file name
+from ukp_project_template.subpackage import SubPackageClass # Here it's necessary because it's a subpackage
+
+BaseClass().something()
+SubPackageClass().something()
+```
+
 ### Using scripts
 
 This is how you can use `ukp_project_template` from command line:

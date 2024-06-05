@@ -63,7 +63,7 @@ Lets take a look at the structure of this template:
 
 ### Where should I add new stuff ?
 
-You should create new files and subpackages inside ukp_project_template and implement your functionalities there. Remember to add what you write to `__init__.py` so that the imports work smoothly. Take a look at `base.py` and `__init__.py` to understand how it works
+You should create new files and subpackages inside ukp_project_template and implement your functionalities there. Remember to add what you write to `__init__.py` so that the imports work smoothly. Take a look at `base.py` and `__init__.py` to understand how it works.
 
 ### Why is `requirements.txt` empty ?
 
@@ -71,7 +71,7 @@ This template is a low dependency project, so it doesn't have any extra dependen
 You can freely add new dependencies.
 
 You should put here everything needed to replicate your work. 
-Testing, linting, and other requirements used only in development should go in `requirements-dev.txt`
+Testing, linting, and other requirements used only in development should go in `requirements-dev.txt`.
 
 ### Why is there a `requirements-dev.txt` file ?
 

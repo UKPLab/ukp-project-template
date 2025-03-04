@@ -33,6 +33,7 @@ If you want to set up this template:
 3. Delete optional files: 
     - If you don't need automatic documentation generation, you can delete folder `docs`, file `.github\workflows\docs.yml` and `mkdocs.yml`
     - If you don't want automatic testing, you can delete folder `tests` and file `.github\workflows\tests.yml`
+    - If you do not wish to have a project page, delete folder `static` and files `.nojekyll`, `index.html`
 4. Prepare a virtual environment:
 ```bash
 python -m venv .venv

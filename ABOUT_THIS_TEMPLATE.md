@@ -4,13 +4,13 @@ Hi, I've adapted this template from the excellent [python-project-template](http
 
 It includes:
 
-- 📦 A basic [setup.py](setup.py) file to provide installation, packaging and distribution for your project.  
-  Template uses setuptools because it's the de-facto standard for Python packages
-- 📃 Documentation structure using [mkdocs](http://www.mkdocs.org)
-- 🧪 Testing structure using [pytest](https://docs.pytest.org/en/latest/)
-- ✅ Code linting using [pylint](https://pypi.org/project/pylint/)
-- 🎯 Entry points to execute your program using `python -m <ukp_project_template>` with basic CLI argument parsing.
-- 🔄 Continuous integration using [Github Actions](https://github.com/UKPLab/ukp-project-template/actions) with jobs to check, lint and test your project.
+- 📦 A basic [setup.py](setup.py) file to provide installation, packaging and distribution for your project; 
+- 📃 Documentation structure using [mkdocs](http://www.mkdocs.org);
+- 🧪 Testing structure using [pytest](https://docs.pytest.org/en/latest/);
+- ✅ Code linting using [pylint](https://pypi.org/project/pylint/);
+- 🎯 Entry points to execute your program using `python -m <ukp_project_template>` with basic CLI argument parsing;
+- 🔄 Continuous integration using [Github Actions](https://github.com/UKPLab/ukp-project-template/actions) with jobs to check, lint and test your project;
+- 🌐 An out-of-the-box project page created automatically for your project.
 
 Are there any changes you'd like to request? Feel free to fork and open a pull request!
 
@@ -28,6 +28,7 @@ Lets take a look at the structure of this template:
 │   requirements-dev.txt            # List of requirements for testing and devlopment
 │   requirements.txt                # An empty file to hold the requirements for the project
 │   setup.py                        # The setup.py file for installing and packaging the project
+│   index.html                      # The template page for the automatically generated project page 
 │
 ├───.github                         # Github metadata for repository
 │   │   dependabot.yml              # Dependabot workflow for updating requirements
@@ -46,6 +47,8 @@ Lets take a look at the structure of this template:
 ├───docs                            # Auto-generated documentation 
 │       index.md                    # Landing page of docs
 │
+├───static                          # Images & CSS files to generate the project page 
+│
 ├───ukp_project_template             # The main python package for the project
 │       base.py                     # The base module for the project
 │       cli.py                      # Defines CLI instructions
@@ -60,6 +63,9 @@ Lets take a look at the structure of this template:
 
 ## FAQs
 
+### How do I adapt the website to my needs ?
+
+You should change the content of `index.html` to fit your needs. Some tinkering with the CSS inside `static` may be required.
 
 ### Where should I add new stuff ?
 

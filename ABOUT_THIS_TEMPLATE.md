@@ -63,9 +63,9 @@ Lets take a look at the structure of this template:
 
 ## FAQs
 
-### How do I adapt the website to my needs ?
+### How can I use this template to deploy a website for my paper ?
 
-You should change the content of `index.html` to fit your needs. Some tinkering with the CSS inside `static` may be required.
+First, you should change the content of `index.html` to fit your needs. Some tinkering with the CSS inside `static` may be required. Then, you need to go to Settings > Pages > Build and deployment and select for Source "Deploy from a branch" and for Branch the one containing your `index.html` (by default it's the `main` branch).
 
 ### Where should I add new stuff ?
 

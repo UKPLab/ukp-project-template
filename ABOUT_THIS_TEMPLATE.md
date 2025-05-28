@@ -71,6 +71,10 @@ First, you should change the content of `index.html` to fit your needs. Some tin
 
 Add the `static` folder and `index.html` from this repository to your paper. Then, follow the FAQ above.
 
+### I already have an external project page. Can I link my repo to it ?
+
+Good news, you can display a repository website right next to your description. Simply click the ⚙ button next to the repo description and fill out the Website field.
+
 ### Where should I add new stuff ?
 
 You should create new files and subpackages inside ukp_project_template and implement your functionalities there. Remember to add what you write to `__init__.py` so that the imports work smoothly. Take a look at `base.py` and `__init__.py` to understand how it works.

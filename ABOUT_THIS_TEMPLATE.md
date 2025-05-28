@@ -67,6 +67,10 @@ Lets take a look at the structure of this template:
 
 First, you should change the content of `index.html` to fit your needs. Some tinkering with the CSS inside `static` may be required. Then, you need to go to Settings > Pages > Build and deployment and select for Source "Deploy from a branch" and for Branch the one containing your `index.html` (by default it's the `main` branch).
 
+### How can I adapt an existing project to deploy a project page ?
+
+Add the `static` folder and `index.html` from this repository to your paper. Then, follow the FAQ above.
+
 ### Where should I add new stuff ?
 
 You should create new files and subpackages inside ukp_project_template and implement your functionalities there. Remember to add what you write to `__init__.py` so that the imports work smoothly. Take a look at `base.py` and `__init__.py` to understand how it works.
